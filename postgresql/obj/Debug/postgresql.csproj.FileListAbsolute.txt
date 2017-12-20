@@ -1,0 +1,36 @@
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\bin\Debug\postgresql.exe.config
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\bin\Debug\postgresql.exe
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\bin\Debug\postgresql.pdb
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\postgresql.csprojResolveAssemblyReference.cache
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\MainWindow.g.cs
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\App.g.cs
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\postgresql_MarkupCompile.cache
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\postgresql_MarkupCompile.lref
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\MainWindow.baml
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\postgresql.g.resources
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\postgresql.Properties.Resources.resources
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\postgresql.csproj.GenerateResource.Cache
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\postgresql.exe
+c:\users\cristiano\Google Drive\Projetos\postgresql\postgresql\obj\Debug\postgresql.pdb
+C:\Users\Cristiano\Google Drive\Projetos\postgresql\postgresql\bin\Debug\Npgsql.dll
+C:\Users\Cristiano\Google Drive\Projetos\postgresql\postgresql\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Cristiano\Google Drive\Projetos\postgresql\postgresql\bin\Debug\Npgsql.xml
+C:\Users\Cristiano\Google Drive\Projetos\postgresql\postgresql\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\postgresql.csprojResolveAssemblyReference.cache
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\MainWindow.g.cs
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\App.g.cs
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\postgresql_MarkupCompile.cache
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\postgresql_MarkupCompile.lref
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\postgresql.exe
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\postgresql.pdb
+D:\GoogleDrive\Projetos\postgresql\postgresql\bin\Debug\postgresql.exe.config
+D:\GoogleDrive\Projetos\postgresql\postgresql\bin\Debug\postgresql.exe
+D:\GoogleDrive\Projetos\postgresql\postgresql\bin\Debug\postgresql.pdb
+D:\GoogleDrive\Projetos\postgresql\postgresql\bin\Debug\Npgsql.dll
+D:\GoogleDrive\Projetos\postgresql\postgresql\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\GoogleDrive\Projetos\postgresql\postgresql\bin\Debug\Npgsql.xml
+D:\GoogleDrive\Projetos\postgresql\postgresql\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\MainWindow.baml
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\postgresql.g.resources
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\postgresql.Properties.Resources.resources
+D:\GoogleDrive\Projetos\postgresql\postgresql\obj\Debug\postgresql.csproj.GenerateResource.Cache
