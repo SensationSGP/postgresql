@@ -21,6 +21,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Diagnostics;
 
+
 namespace postgresql
 {
     /// <summary>
@@ -30,15 +31,15 @@ namespace postgresql
     {
         public MainWindow()
         {
-           
+
             InitializeComponent();
             {
-               
+
             }
             List<string> arquivos = new List<string>();
 
         }
-      
+
         private void frmPrincipal_Loaded(object sender, RoutedEventArgs e)
         {
             DateTime newDate = DateTime.Now;
@@ -50,7 +51,7 @@ namespace postgresql
             }
             {
                 {
-                    System.Windows.Forms.MessageBox.Show("EXECUTAR ESSE APLICATIVO APENAS NA VERSÃO DO INTEGRA 6.00a!!", "Atenção!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);                   
+                    System.Windows.Forms.MessageBox.Show("EXECUTAR ESSE APLICATIVO APENAS NA VERSÃO DO INTEGRA 6.00a!!", "Atenção!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 {
                     string pdvprograms = @"C:\Sistemas\PDVAtual\Programs\";
@@ -114,13 +115,13 @@ namespace postgresql
             string senhabd = txtSenhapostgre.Password;
             string senhapadrao = "pg@atualDev";
             string nomebd = txtNomeBD.Text;
-            string localrestore = txtLocalBD.Text;               
+            string localrestore = txtLocalBD.Text;
 
             string connectionString = "Server=" + serverbd + "; Port=" + portabd + "; UserID=" + userpadrao + "; password=" + senhapadrao + "; Database=" + bdsqlpadrao + ";";
             string connectionString2 = "Server=" + serverbd + "; Port=" + portabd + "; UserID=" + userbd + "; password=" + senhabd + "; Database=" + bdsqlpadrao + ";";
 
             if (rbSenhaPadrao.IsChecked == true)
-                {
+            {
                 try
                 {
                     NpgsqlConnection conn = new NpgsqlConnection(connectionString);
@@ -166,7 +167,7 @@ namespace postgresql
                         }
                     }
                     {
-                        conn.Close();                        
+                        conn.Close();
                     }
                 }
                 catch
@@ -188,9 +189,9 @@ namespace postgresql
             string senhabd = txtSenhapostgre.Password;
             string senhapadrao = "pg@atualDev";
             string nomebd = txtNomeBD.Text;
-            string localrestore = txtLocalBD.Text;            
-            string comandocriabd = "CREATE DATABASE integrapgsql WITH OWNER = postgres TEMPLATE = template0 ENCODING = 'SQL_ASCII' TABLESPACE = pg_default LC_COLLATE = 'Portuguese_Brazil.1252' LC_CTYPE = 'Portuguese_Brazil.1252' CONNECTION LIMIT = -1;";            
-            
+            string localrestore = txtLocalBD.Text;
+            string comandocriabd = "CREATE DATABASE integrapgsql WITH OWNER = postgres TEMPLATE = template0 ENCODING = 'SQL_ASCII' TABLESPACE = pg_default LC_COLLATE = 'Portuguese_Brazil.1252' LC_CTYPE = 'Portuguese_Brazil.1252' CONNECTION LIMIT = -1;";
+
             string connectionString = "Server=" + serverbd + "; Port=" + portabd + "; UserID=" + userpadrao + "; password=" + senhapadrao + "; Database=" + bdsqlpadrao + ";";
 
             try
@@ -233,13 +234,13 @@ namespace postgresql
             string senhabd = txtSenhapostgre.Password;
             string senhapadrao = "pg@atualDev";
             string nomebd = txtNomeBD.Text;
-            string localrestore = txtLocalBD.Text;            
-            string comandolistabd = "SELECT datname FROM pg_database WHERE datname LIKE '%int%';" ;     
+            string localrestore = txtLocalBD.Text;
+            string comandolistabd = "SELECT datname FROM pg_database WHERE datname LIKE '%int%';";
 
             string connectionString = "Server=" + serverbd + "; Port=" + portabd + "; UserID=" + userpadrao + "; password=" + senhapadrao + "; Database=" + bdsqlpadrao + ";";
 
             cbxListaBD.Items.Clear();
-            
+
             try
             {
                 NpgsqlConnection conn = new NpgsqlConnection(connectionString);
@@ -248,7 +249,7 @@ namespace postgresql
                     {
                         NpgsqlCommand command = new NpgsqlCommand(comandolistabd, conn);
                         NpgsqlDataReader dr = command.ExecuteReader();
-                        
+
                         while (dr.Read())
                         {
                             cbxListaBD.Items.Add(dr["datname"].ToString());
@@ -324,8 +325,8 @@ namespace postgresql
             string nomebd = txtNomeBD.Text;
             string localrestore = txtLocalBD.Text;
             string nomebdold = cbxListaBD.SelectionBoxItem.ToString();
-            string comandorenomeiabd = ("ALTER DATABASE \"" +  nomebdold + "\" RENAME TO  \""  + nomebd +  "\";" );
-            
+            string comandorenomeiabd = ("ALTER DATABASE \"" + nomebdold + "\" RENAME TO  \"" + nomebd + "\";");
+
             string connectionString = "Server=" + serverbd + "; Port=" + portabd + "; UserID=" + userpadrao + "; password=" + senhapadrao + "; Database=" + bdsqlpadrao + ";";
             try
             {
@@ -339,14 +340,14 @@ namespace postgresql
                     conn.Close();
                     cbxListaBD.Items.Clear();
                     txtNomeBD.Clear();
-                    System.Windows.Forms.MessageBox.Show("O BD " + nomebdold + " foi renomeado com sucesso para '" + nomebd + "'", "Confirmação!!", MessageBoxButtons.OK, MessageBoxIcon.Information);                    
+                    System.Windows.Forms.MessageBox.Show("O BD " + nomebdold + " foi renomeado com sucesso para '" + nomebd + "'", "Confirmação!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch
             {
                 System.Windows.Forms.MessageBox.Show("O sistema não pode completar a operação!! Por favor verifique as configurações!!\nProvavelmente já deve existir um BD com esse nome '" + nomebd + "'", "Atenção!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cbxListaBD.Items.Clear();
-                txtNomeBD.Clear();                
+                txtNomeBD.Clear();
 
             }
 
@@ -416,40 +417,75 @@ namespace postgresql
 
         private void gridTeste_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-           // gridTeste.Background = new SolidColorBrush(Colors.Silver);            
+            // gridTeste.Background = new SolidColorBrush(Colors.Silver);            
         }
         private void gridTeste_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-           // gridTeste.Background = new SolidColorBrush(Colors.Green);
+            // gridTeste.Background = new SolidColorBrush(Colors.Green);
         }
         // // // // // // // // // // // // // // // // // // 
         private void gridRenomeiaBD_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-          //  gridRenomeiaBD.Background = new SolidColorBrush(Colors.Silver);            
+            //  gridRenomeiaBD.Background = new SolidColorBrush(Colors.Silver);            
         }
         private void gridRenomeiaBD_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-          //  gridRenomeiaBD.Background = new SolidColorBrush(Colors.Green);
+            //  gridRenomeiaBD.Background = new SolidColorBrush(Colors.Green);
         }
         // // // // // // // // // // // // // // // // // // 
         private void gridCriaBD_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-          //  gridCriaBD.Background = new SolidColorBrush(Colors.Silver);
+            //  gridCriaBD.Background = new SolidColorBrush(Colors.Silver);
         }
         private void gridCriaBD_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-          //  gridCriaBD.Background = new SolidColorBrush(Colors.Green);
+            //  gridCriaBD.Background = new SolidColorBrush(Colors.Green);
         }
         // // // // // // // // // // // // // // // // // // 
         private void gridRestore_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-          //  gridRestore.Background = new SolidColorBrush(Colors.Silver);
+            //  gridRestore.Background = new SolidColorBrush(Colors.Silver);
         }
         private void gridRestore_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-           // gridRestore.Background = new SolidColorBrush(Colors.Green);
+            // gridRestore.Background = new SolidColorBrush(Colors.Green);
         }
-        // // // // // // // // // // // // // // // // // // 
 
+        private void btnDownload_Click(object sender, RoutedEventArgs e)
+        {
+            string local = @"C:\VDF7\Integra\Programs\";
+            string arquivo = "ExportaSQL.exe";
+
+            try
+            {
+                if (Directory.Exists(local) == true)
+                {
+                    if (File.Exists(local + arquivo) == false)
+                    {
+                        string urlArquivo = "http://www.atualsistemas.net/ftp/Integra/ExportaSQL.exe";
+                        string caminhoArquivo = local + arquivo;
+                        WebClient client = new WebClient();
+                        client.DownloadFile(urlArquivo, caminhoArquivo);
+                    }
+                   
+                    if (File.Exists(local + arquivo) == true)
+                    {
+                        if (System.Windows.Forms.MessageBox.Show("Arquivo " + arquivo + " já existe na pasta!!\nDeseja fazer o download novamente??", "Atenção!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            string urlArquivo = "http://www.atualsistemas.net/ftp/Integra/ExportaSQL.exe";
+                            string caminhoArquivo = local + arquivo;
+                            WebClient client = new WebClient();
+                            client.DownloadFile(urlArquivo, caminhoArquivo);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+            // // // // // // // // // // // // // // // // // // 
+
+        }
     }
 }

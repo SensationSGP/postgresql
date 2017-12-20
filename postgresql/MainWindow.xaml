@@ -185,6 +185,7 @@
             </Separator>
             <Button x:Name="btnBuscarBD" Content="..." HorizontalAlignment="Left" Margin="396,45,0,0" VerticalAlignment="Top" Width="27" Background="White" BorderBrush="Black" Height="23" Click="btnBuscarBD_Click"/>
             <Button x:Name="btnRestore" Content="Restore" HorizontalAlignment="Left" Margin="463,45,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnRestore_Click"/>
+            <Button x:Name="btnDownload" Content="Download Exporta" HorizontalAlignment="Left" Margin="617,45,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnDownload_Click"/>
         </Grid>
         <Grid x:Name="gridRestore_Copy" Height="9" Margin="0,434,0,0" VerticalAlignment="Top">
             <Grid.Background>
