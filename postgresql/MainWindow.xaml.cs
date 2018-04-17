@@ -20,10 +20,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Data.SqlClient;
+using System.Drawing;
 
 
 namespace postgresql
 {
+    
+
     /// <summary>
     /// Interação lógica para MainWindow.xam
     /// </summary>
@@ -31,19 +35,19 @@ namespace postgresql
     {
         public MainWindow()
         {
-
             InitializeComponent();
             {
 
             }
             List<string> arquivos = new List<string>();
 
+
         }
 
         private void frmPrincipal_Loaded(object sender, RoutedEventArgs e)
         {
             DateTime newDate = DateTime.Now;
-            DateTime oldDate = new DateTime(2017, 12, 31, 00, 00, 00);
+            DateTime oldDate = new DateTime(2018, 04, 15, 00, 00, 00);
             if (oldDate < newDate)
             {
                 System.Windows.Forms.MessageBox.Show("Esse aplicativo expirou, favor procurar o setor Service Desk", "Atenção!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -59,6 +63,13 @@ namespace postgresql
                     string integraprograms = @"C:\Vdf7\Integra\Programs\";
                     string integraatualiza = @"C:\Vdf7\Integra\Atualiza\";
                     string dll = "msvcr120.dll";
+
+                    string system32 = @"C:\Windows\System32\";
+                    string syswow64 = @"C:\Windows\SysWOW64\";
+                    string caminho = @"C:\AtualSistemas\";
+                    string dllconexao = "Npgsql.dll";
+                    string dllnet = "System.Threading.Tasks.Extensions.dll";
+
                     try
                     {
                         if (Directory.Exists(pdvatualiza) == true)
@@ -95,6 +106,34 @@ namespace postgresql
                                 File.Copy(integraatualiza + dll, integraprograms + dll);
                             }
                         }
+                        if (Directory.Exists(system32) == true)
+                        {
+                            if (File.Exists(system32 + dllconexao) == false)
+                            {
+                                File.Copy(caminho + dllconexao, system32 + dllconexao);
+                            }
+                        }
+                        if (Directory.Exists(system32) == true)
+                        {
+                            if (File.Exists(system32 + dllnet) == false)
+                            {
+                                File.Copy(caminho + dllnet, system32 + dllnet);
+                            }
+                        }
+                        if (Directory.Exists(syswow64) == true)
+                        {
+                            if (File.Exists(syswow64 + dllconexao) == false)
+                            {
+                                File.Copy(caminho + dllconexao, syswow64 + dllconexao);
+                            }
+                        }
+                        if (Directory.Exists(syswow64) == true)
+                        {
+                            if (File.Exists(syswow64 + dllnet) == false)
+                            {
+                                File.Copy(caminho + dllnet, syswow64 + dllnet);
+                            }
+                        }
                     }
                     catch
                     {
@@ -106,6 +145,11 @@ namespace postgresql
 
         private void btnTeste_Click(object sender, RoutedEventArgs e)
         {
+            {
+                lblTesteConexao.Content = " Testando conexão!!! ";
+                lblEmpresaBD.Visibility = Visibility.Collapsed;
+                lblListaBD.Visibility = Visibility.Collapsed;
+            }
             string serverbd = txtServer.Text;
             string portabd = txtPorta.Text;
             string userbd = txtUsuario.Text;
@@ -116,6 +160,7 @@ namespace postgresql
             string senhapadrao = "pg@atualDev";
             string nomebd = txtNomeBD.Text;
             string localrestore = txtLocalBD.Text;
+            string selectcadsys = "SELECT licenca FROM cadsys;";
 
             string connectionString = "Server=" + serverbd + "; Port=" + portabd + "; UserID=" + userpadrao + "; password=" + senhapadrao + "; Database=" + bdsqlpadrao + ";";
             string connectionString2 = "Server=" + serverbd + "; Port=" + portabd + "; UserID=" + userbd + "; password=" + senhabd + "; Database=" + bdsqlpadrao + ";";
@@ -180,6 +225,8 @@ namespace postgresql
 
         private void btnCriarBD_Click(object sender, RoutedEventArgs e)
         {
+            lblEmpresaBD.Visibility = Visibility.Collapsed;
+            lblListaBD.Visibility = Visibility.Collapsed;
             string serverbd = txtServer.Text;
             string portabd = txtPorta.Text;
             string userbd = txtUsuario.Text;
@@ -225,6 +272,8 @@ namespace postgresql
 
         private void btnListarBD_Click(object sender, RoutedEventArgs e)
         {
+            lblEmpresaBD.Visibility = Visibility.Collapsed;
+            lblListaBD.Visibility = Visibility.Collapsed;
             string serverbd = txtServer.Text;
             string portabd = txtPorta.Text;
             string userbd = txtUsuario.Text;
@@ -269,10 +318,12 @@ namespace postgresql
 
         private void btnBuscarBD_Click(object sender, RoutedEventArgs e)
         {
+            lblEmpresaBD.Visibility = Visibility.Collapsed;
+            lblListaBD.Visibility = Visibility.Collapsed;
             System.Windows.Forms.OpenFileDialog ofd1 = new System.Windows.Forms.OpenFileDialog();
 
             //define as propriedades do controle OpenFileDialog
-            ofd1.Multiselect = true;
+            ofd1.Multiselect = false;
             ofd1.Title = "Selecionar Arquivo";
             ofd1.InitialDirectory = @"C:\VDF7\Integra\Base0001";
             //filtra para exibir os arquivos
@@ -314,6 +365,8 @@ namespace postgresql
 
         private void btnRenomearBD_Click(object sender, RoutedEventArgs e)
         {
+            lblEmpresaBD.Visibility = Visibility.Collapsed;
+            lblListaBD.Visibility = Visibility.Collapsed;
             string serverbd = txtServer.Text;
             string portabd = txtPorta.Text;
             string userbd = txtUsuario.Text;
@@ -355,73 +408,128 @@ namespace postgresql
 
         private void btnRestore_Click(object sender, RoutedEventArgs e)
         {
-            //string pgDumpPath = @"C:\Program Files\PostgreSQL\9.4\bin\pg_restore.exe";
-            //string outFile = txtLocalBD.Text.ToString();
-            //string host = txtServer.Text;
-            //string port = txtPorta.Text;
-            //string database = "integrapgsql";
-            //string user = "postgres";
-            //string password = "pg@atualDev";
-            //string arquivo = txtLocalBD.Text.ToString();
-            //{
-            //    String dumpCommand = "\"" + pgDumpPath + "\"" + " -Fc" + " -h " + host + " -p " + port + " -d " + database + " -U " + user + "";
-            //    String passFileContent = "" + host + ":" + port + ":" + database + ":" + user + ":" + password + "";
+            if (System.Windows.Forms.MessageBox.Show("Se tiver algum dado no BD 'integrapgsql' será apagado!!\nDeseja Continuar??", "Atenção!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+            {
+                lblEmpresaBD.Visibility = Visibility.Collapsed;
+                lblListaBD.Visibility = Visibility.Collapsed;
+                string serverbd = txtServer.Text;
+                string portabd = txtPorta.Text;
+                string userpadrao = "postgres";
+                string senhapadrao = "pg@atualDev";
+                string bdsqlpadrao = "integrapgsql";
+                string pgDumpPath = @"C:\Progra~1\PostgreSQL\9.4\bin\pg_restore.exe";
+                string host = txtServer.Text;
+                string port = txtPorta.Text;
+                string database = "integrapgsql";
+                string user = "postgres";
+                string password = "pg@atualDev";
+                string arquivo = txtLocalBD.Text.ToString();
+                string comandolistabd = "drop schema public cascade;" + "create schema public;";
+                //string selectcadsys = "SELECT licenca FROM cadsys;";
 
-            //    String batFilePath = System.IO.Path.Combine(
-            //        System.IO.Path.GetTempPath(),
-            //        Guid.NewGuid().ToString() + ".bat");
+                string connectionString = "Server=" + serverbd + "; Port=" + portabd + "; UserID=" + userpadrao + "; password=" + senhapadrao + "; Database=" + bdsqlpadrao + ";";
+                try
+                {
+                    NpgsqlConnection conn = new NpgsqlConnection(connectionString);
+                    conn.Open();
+                    {
+                        {
+                            NpgsqlCommand command = new NpgsqlCommand(comandolistabd, conn);
+                            NpgsqlDataReader dr = command.ExecuteReader();
 
-            //    String passFilePath = System.IO.Path.Combine(
-            //        System.IO.Path.GetTempPath(),
-            //        Guid.NewGuid().ToString() + ".conf");
+                            while (dr.Read())
+                            {
 
-            //    try
-            //    {
-            //        String batchContent = "";
-            //        batchContent += "@" + "set PGPASSFILE=" + passFilePath + "\n";
-            //        batchContent += "@" + dumpCommand + "  > " + "\"" + outFile + "\"" + "\n";
+                            }
+                        }
+                        {
+                            conn.Close();
+                            cbxListaBD.SelectedIndex = 0;
+                        }
+                    }
+                }
+                catch
+                {
+                }
 
-            //        File.WriteAllText(
-            //            batFilePath,
-            //            batchContent,
-            //            Encoding.ASCII);
+                {
+                    String dumpCommand = "set PGUSER=postgres" + " \r\n" + "set PGPASSWORD=pg@atualDev" + "\r\n" + pgDumpPath + " -i " + "-h " + host + " -p " + port + " -U " + user + " -d " + database + " -v " + arquivo; //+" \r\n" + "pause"
+                    String passFileContent = " " + host + " : " + port + " : " + database + " : " + user + " : " + password + "";
 
-            //        File.WriteAllText(
-            //            passFilePath,
-            //            passFileContent,
-            //            Encoding.ASCII);
+                    String batFilePath = System.IO.Path.Combine(
+                        System.IO.Path.GetTempPath(),
+                        Guid.NewGuid().ToString() + ".bat");
 
-            //        if (File.Exists(outFile))
-            //            File.Delete(outFile);
+                    try
+                    {
+                        String batchContent = "";
+                        batchContent += dumpCommand;
 
-            //        ProcessStartInfo oInfo = new ProcessStartInfo(batFilePath);
-            //        oInfo.UseShellExecute = false;
-            //        oInfo.CreateNoWindow = true;
+                        File.WriteAllText(
+                            batFilePath,
+                            batchContent,
+                            Encoding.ASCII);
 
-            //        using (Process proc = System.Diagnostics.Process.Start(oInfo))
-            //        {
-            //            proc.WaitForExit();
-            //            proc.Close();
-            //        }
-            //    }
-            //    finally
-            //    {
-            //        if (File.Exists(batFilePath))
-            //            File.Delete(batFilePath);
+                        ProcessStartInfo oInfo = new ProcessStartInfo(batFilePath);
+                        oInfo.UseShellExecute = false;
+                        oInfo.CreateNoWindow = true;
 
-            //        if (File.Exists(passFilePath))
-            //            File.Delete(passFilePath);
-            //    }
-            //}
+                        using (Process proc = System.Diagnostics.Process.Start(oInfo))
+                        {
+                            proc.WaitForExit();
+                            proc.Close();
+                        }
+                    }
+                    finally
+                    {
+                        if (File.Exists(batFilePath))
+                            File.Delete(batFilePath);
+                        System.Windows.Forms.MessageBox.Show("Restauração Concluída com sucesso", "Atenção!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    }
+                    try
+                    {
+                        string selectcadsys = "SELECT licenca FROM cadsys;";
+                        NpgsqlConnection conn = new NpgsqlConnection(connectionString);
+                        conn.Open();
+                        {
+                            {
+                                {
+                                    NpgsqlCommand command = new NpgsqlCommand(selectcadsys, conn);
+                                    NpgsqlDataReader dr = command.ExecuteReader();
+                                    DataTable dt = new DataTable();
+                                    dt.Load(dr);
+                                    txtEmpresaBD.Text = (dr["licenca"].ToString());
+                                    //lblListaBD.DisplayMemberPath = "licenca";
+                                    //lblListaBD.Items.Add(dt);
+                                    lblEmpresaBD.Visibility = Visibility.Visible;
+                                    txtEmpresaBD.Visibility = Visibility.Visible;
+                                    //lblListaBD.Visibility = Visibility.Visible;
+                                }
+                            }
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+
+                    catch
+                    {
+
+                    }
+                }
+            }
+
+
         }
 
         private void gridTeste_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            // gridTeste.Background = new SolidColorBrush(Colors.Silver);            
+        {          
+            
         }
         private void gridTeste_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            // gridTeste.Background = new SolidColorBrush(Colors.Green);
+             //gridTeste.Background = new SolidColorBrush(Colors.Green);
         }
         // // // // // // // // // // // // // // // // // // 
         private void gridRenomeiaBD_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
@@ -467,7 +575,7 @@ namespace postgresql
                         WebClient client = new WebClient();
                         client.DownloadFile(urlArquivo, caminhoArquivo);
                     }
-                   
+
                     if (File.Exists(local + arquivo) == true)
                     {
                         if (System.Windows.Forms.MessageBox.Show("Arquivo " + arquivo + " já existe na pasta!!\nDeseja fazer o download novamente??", "Atenção!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
@@ -487,5 +595,130 @@ namespace postgresql
             // // // // // // // // // // // // // // // // // // 
 
         }
+
+        private void txtSenhalistaBD_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (txtSenhalistaBD.Password.Trim() == "abd1179jc")
+
+                {
+                    btnListarBD.IsEnabled = true;
+                    btnRenomearBD.IsEnabled = true;
+                    btnRestore.IsEnabled = true;
+                    btnCriarBD.IsEnabled = true;
+                    btnCriausuario.IsEnabled = true;
+                }
+                else
+                {
+                    btnListarBD.IsEnabled = false;
+                    btnRenomearBD.IsEnabled = false;
+                    btnRestore.IsEnabled = false;
+                    btnCriarBD.IsEnabled = false;
+                    btnCriausuario.IsEnabled = false;
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void btnCriausuario_Click(object sender, RoutedEventArgs e)
+        {
+            if (rbSenhaPadrao.IsChecked == true)
+            {
+                string serverbd = txtServer.Text;
+                string portabd = txtPorta.Text;
+                string userpadrao = "postgres";
+                string senhapadrao = "pg@atualDev";
+                string bdsqlpadrao = "postgres";
+
+
+                string connectionString = "Server=" + serverbd + "; Port=" + portabd + "; UserID=" + userpadrao + "; password=" + senhapadrao + "; Database=" + bdsqlpadrao + ";";
+                try
+                {
+                    NpgsqlConnection conn = new NpgsqlConnection(connectionString);
+                    conn.Open();
+                    {
+                        NpgsqlCommand command = new NpgsqlCommand("do $$ BEGIN IF NOT EXISTS ( SELECT * FROM   pg_catalog.pg_user WHERE  usename = 'atualsistemas') THEN CREATE ROLE atualsistemas WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'F3cH@d0S'; END IF; END $$;" +
+                            "do $$ BEGIN IF NOT EXISTS ( SELECT * FROM   pg_catalog.pg_user WHERE  usename = 'desenvolvedor') THEN CREATE ROLE desenvolvedor WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'pg@acessoDev'; END IF; END $$;" +
+                            "do $$ BEGIN IF NOT EXISTS ( SELECT * FROM   pg_catalog.pg_user WHERE  usename = 'consultor') THEN CREATE ROLE consultor WITH LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'abd1179jcInov'; END IF; END $$;" +
+                            "ALTER ROLE postgres WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'pg@atualDev';" +
+                            "ALTER ROLE atualsistemas WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'F3cH@d0S';" +
+                            "ALTER ROLE desenvolvedor WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'pg@acessoDev';" +
+                            "ALTER ROLE consultor WITH LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'abd1179jcInov';", conn);
+                        NpgsqlDataReader dr = command.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            int i;
+                            for (i = 0; i < dr.FieldCount; i++)
+                            {
+                                Console.Write("{0} \t", dr[i]);
+                            }
+                            Console.WriteLine();
+                        }
+                    }
+                    {
+
+                        conn.Close();
+                        System.Windows.Forms.MessageBox.Show("Usuários criados com Sucesso!!", "Confirmação!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch
+                {
+                    System.Windows.Forms.MessageBox.Show("Usuários NÂO foram criados!!\nProvavelmente a mude a opção para senha de instalação e digite a senha que utilizou para instalar no campo 'Senha de Instalação'!!", "Atenção!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            if (rbSenhainstala.IsChecked == true)
+            {
+
+                string serverbd2 = txtServer.Text;
+                string portabd2 = txtPorta.Text;
+                string userpadrao2 = "postgres";
+                string bdsqlpadrao2 = "integrapgsql";
+                string senhainstalacao = txtSenhapostgre.Password;
+
+                string connectionString2 = "Server=" + serverbd2 + "; Port=" + portabd2 + "; UserID=" + userpadrao2 + "; password=" + senhainstalacao + "; Database=" + bdsqlpadrao2 + ";";
+                try
+                {
+                    NpgsqlConnection conn2 = new NpgsqlConnection(connectionString2);
+                    conn2.Open();
+                    {
+                        NpgsqlCommand command2 = new NpgsqlCommand("do $$ BEGIN IF NOT EXISTS ( SELECT * FROM   pg_catalog.pg_user WHERE  usename = 'atualsistemas') THEN CREATE ROLE atualsistemas WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'F3cH@d0S'; END IF; END $$;" +
+                            "do $$ BEGIN IF NOT EXISTS ( SELECT * FROM   pg_catalog.pg_user WHERE  usename = 'desenvolvedor') THEN CREATE ROLE desenvolvedor WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'pg@acessoDev'; END IF; END $$;" +
+                            "do $$ BEGIN IF NOT EXISTS ( SELECT * FROM   pg_catalog.pg_user WHERE  usename = 'consultor') THEN CREATE ROLE consultor WITH LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'abd1179jcInov'; END IF; END $$;" +
+                            "ALTER ROLE postgres WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'pg@atualDev';" +
+                            "ALTER ROLE atualsistemas WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'F3cH@d0S';" +
+                            "ALTER ROLE desenvolvedor WITH LOGIN SUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'pg@acessoDev';" +
+                            "ALTER ROLE consultor WITH LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 ENCRYPTED PASSWORD 'abd1179jcInov';", conn2);
+                        NpgsqlDataReader dr2 = command2.ExecuteReader();
+                        while (dr2.Read())
+                        {
+                            int i;
+                            for (i = 0; i < dr2.FieldCount; i++)
+                            {
+                                Console.Write("{0} \t", dr2[i]);
+                            }
+                            Console.WriteLine();
+                        }
+                    }
+                    {
+
+                        conn2.Close();
+                        System.Windows.Forms.MessageBox.Show("Usuários criados com Sucesso!!", "Confirmação!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch
+                {
+                    System.Windows.Forms.MessageBox.Show("Usuários NÂO foram criados!!\nProvavelmente a mude a opção para senha de padrão e tente novamente!!", "Atenção!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
+        }
     }
 }
+
+
+

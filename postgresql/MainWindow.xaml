@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:postgresql"
         mc:Ignorable="d"
-        Title="Manutenção PostgreSQL" Height="485.333" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Imagens/Integra.ico" Loaded="frmPrincipal_Loaded">
+        Title="Manutenção PostgreSQL" Height="500" Width="850" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Imagens/Administrative_Tools.ico" Loaded="frmPrincipal_Loaded" FontFamily="Century Gothic" WindowStyle="ThreeDBorderWindow">
     <Grid>
         <Grid x:Name="gridConexao" Height="31" VerticalAlignment="Top" Background="#FF075B1E">
             <Label Content="Server:" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Margin="0,2,0,0"/>
-            <TextBox x:Name="txtServer" HorizontalAlignment="Left" Height="23" Margin="42,3,0,0" TextWrapping="Wrap" Text="localhost" VerticalAlignment="Top" Width="106" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
+            <TextBox x:Name="txtServer" HorizontalAlignment="Left" Height="23" Margin="44,3,0,0" TextWrapping="Wrap" Text="localhost" VerticalAlignment="Top" Width="106" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
             <Label Content="Porta:" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Margin="152,2,0,0"/>
-            <TextBox x:Name="txtPorta" HorizontalAlignment="Left" Height="23" Margin="188,3,0,0" TextWrapping="Wrap" Text="5432" VerticalAlignment="Top" Width="106" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
-            <Label Content="Usuário:" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Margin="298,2,0,0"/>
-            <TextBox x:Name="txtUsuario" HorizontalAlignment="Left" Height="23" Margin="350,3,0,0" TextWrapping="Wrap" Text="postgres" VerticalAlignment="Top" Width="106" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
-            <Label Content="Senha:" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Margin="627,2,0,0"/>
-            <PasswordBox x:Name="txtSenhapostgre" HorizontalAlignment="Left" Margin="668,3,0,0" VerticalAlignment="Top" Width="106" Height="23" Password="1234" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Label Content="Banco:" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Margin="461,2,0,0"/>
-            <TextBox x:Name="txtBD" HorizontalAlignment="Left" Height="23" Margin="505,3,0,0" TextWrapping="Wrap" Text="integrapgsql" VerticalAlignment="Top" Width="106" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
+            <TextBox x:Name="txtPorta" HorizontalAlignment="Left" Height="23" Margin="192,3,0,0" TextWrapping="Wrap" Text="5432" VerticalAlignment="Top" Width="106" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
+            <Label Content="Usuário:" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Margin="296,2,0,0"/>
+            <TextBox x:Name="txtUsuario" HorizontalAlignment="Left" Height="23" Margin="348,3,0,0" TextWrapping="Wrap" Text="postgres" VerticalAlignment="Top" Width="106" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
+            <Label Content="Senha de Instal.:" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Margin="614,2,0,0" FontSize="11"/>
+            <PasswordBox x:Name="txtSenhapostgre" HorizontalAlignment="Left" Margin="710,3,0,0" VerticalAlignment="Top" Width="106" Height="23" Password="1234" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Banco:" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Margin="452,2,0,0"/>
+            <TextBox x:Name="txtBD" HorizontalAlignment="Left" Height="23" Margin="501,3,0,0" TextWrapping="Wrap" Text="integrapgsql" VerticalAlignment="Top" Width="106" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
         </Grid>
         <Grid x:Name="gridTeste" Height="100" Margin="0,31,0,0" VerticalAlignment="Top" OpacityMask="Red" MouseLeave="gridTeste_MouseLeave" MouseMove="gridTeste_MouseMove">
             <Grid.Background>
@@ -26,10 +26,10 @@
                     <GradientStop Color="#FF454F63" Offset="0.36"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <RadioButton x:Name="rbSenhaPadrao" Content="Senha Padrão" HorizontalAlignment="Left" Margin="140,38,0,48" VerticalAlignment="Center" Foreground="White" IsChecked="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <RadioButton x:Name="rbSenhainstala" Content="Senha de Instalação" HorizontalAlignment="Left" Margin="140,52,0,32" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <RadioButton x:Name="rbSenhaPadrao" Content="Senha Padrão" HorizontalAlignment="Left" Margin="140,38,0,48" VerticalAlignment="Center" Foreground="White" IsChecked="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GroupName="senha" ClickMode="Press" BorderBrush="#FF2C2929" Background="White"/>
+            <RadioButton x:Name="rbSenhainstala" Content="Senha de Instalação" HorizontalAlignment="Left" Margin="140,52,0,32" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GroupName="senha" ClickMode="Press" BorderBrush="#FF2C2929" Background="White"/>
             <Label Content="Selecione a Senha:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="137,10,0,64" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Separator HorizontalAlignment="Left" Height="100" Margin="232.523,0,0,0" VerticalAlignment="Top" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+            <Separator HorizontalAlignment="Left" Height="100" Margin="282.523,0,0,0" VerticalAlignment="Top" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
                 <Separator.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -50,8 +50,8 @@
                 </Separator.RenderTransform>
             </Separator>
             <Label Content="Teste de Conexão:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="10,32,0,42" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Button x:Name="btnTeste" Content="Executar Teste" HorizontalAlignment="Left" Margin="304,35,0,0" VerticalAlignment="Top" Width="159" Background="White" BorderBrush="Black" Click="btnTeste_Click"/>
-            <Separator HorizontalAlignment="Left" Height="100" Margin="441.091,0,0,0" VerticalAlignment="Top" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+            <Button x:Name="btnTeste" Content="Executar Teste" HorizontalAlignment="Left" Margin="354,35,0,0" VerticalAlignment="Top" Width="159" Background="White" BorderBrush="Black" Click="btnTeste_Click"/>
+            <Separator HorizontalAlignment="Left" Height="100" Margin="491.091,0,0,0" VerticalAlignment="Top" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
                 <Separator.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -61,7 +61,11 @@
                     </TransformGroup>
                 </Separator.RenderTransform>
             </Separator>
-            <Label x:Name="lblTesteConexao" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="490,32,0,42" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="lblTesteConexao" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="540,10,0,64" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <ListBox x:Name="lblListaBD" HorizontalAlignment="Left" Height="19" Margin="636,71,0,0" VerticalAlignment="Top" Width="198" FontSize="11" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Collapsed"/>
+            <Label x:Name="lblEmpresaBD" Content="Empresa BD &#xD;&#xA;integrapgsql:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="540,55,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="45" Width="91" Visibility="Collapsed"/>
+            <Separator HorizontalAlignment="Left" Height="36" Margin="540,32,0,0" VerticalAlignment="Top" Width="294" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5"/>
+            <TextBox x:Name="txtEmpresaBD" HorizontalAlignment="Left" Height="23" Margin="636,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Visibility="Collapsed"/>
         </Grid>
         <Grid x:Name="gridRenomeiaBD" Height="100" Margin="0,131,0,0" VerticalAlignment="Top" MouseLeave="gridRenomeiaBD_MouseLeave" MouseMove="gridRenomeiaBD_MouseMove">
             <Grid.Background>
@@ -81,9 +85,9 @@
                 </Separator.RenderTransform>
             </Separator>
             <Label Content="Renomea BD:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="10,33,0,41" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <ComboBox x:Name="cbxListaBD" HorizontalAlignment="Left" Margin="336,50,0,0" VerticalAlignment="Top" Width="164" IsSynchronizedWithCurrentItem="False" BorderBrush="Black" Background="White" SelectedIndex="0"/>
-            <Label Content="Selecione o BD p/ Renomear:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="336,15,0,59" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Separator HorizontalAlignment="Left" Height="100" Margin="284,1.353,0,-1.353" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+            <ComboBox x:Name="cbxListaBD" HorizontalAlignment="Left" Margin="372,50,0,0" VerticalAlignment="Top" Width="164" IsSynchronizedWithCurrentItem="False" BorderBrush="Black" Background="White" SelectedIndex="0"/>
+            <Label Content="Selecione o BD p/ Renomear:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="363,16,0,60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Separator HorizontalAlignment="Left" Height="100" Margin="320,1.353,0,-1.353" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
                 <Separator.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -93,11 +97,11 @@
                     </TransformGroup>
                 </Separator.RenderTransform>
             </Separator>
-            <Label Content="Digite a Senha p/ liberar a Função:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="131,0,0,74" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <PasswordBox x:Name="txtSenhalistaBD" HorizontalAlignment="Left" Margin="157,25,0,0" VerticalAlignment="Top" Width="120" Height="23" Password="1234" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Digite a Senha p/ liberar a Função:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="132,0,0,74" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <PasswordBox x:Name="txtSenhalistaBD" HorizontalAlignment="Left" Margin="172,24,0,0" VerticalAlignment="Top" Width="120" Height="23" Password="1234" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PasswordChanged="txtSenhalistaBD_PasswordChanged"/>
             <Label Content="Click para listar os Bancos:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="145,50,0,24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Button x:Name="btnListarBD" Content="Listar BD" HorizontalAlignment="Left" Margin="145,70,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnListarBD_Click"/>
-            <Separator HorizontalAlignment="Left" Height="100" Margin="470.433,1.353,0,-1.353" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+            <Button x:Name="btnListarBD" Content="Listar BD" HorizontalAlignment="Left" Margin="152,70,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnListarBD_Click" IsEnabled="False"/>
+            <Separator HorizontalAlignment="Left" Height="100" Margin="506.433,1.353,0,-1.353" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
                 <Separator.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -107,9 +111,9 @@
                     </TransformGroup>
                 </Separator.RenderTransform>
             </Separator>
-            <Label Content="Digite um nome (Ideal &quot;integrapgsqlold ...&quot;, ):" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="515,0,0,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="45"/>
-            <TextBox x:Name="txtNomeBD" HorizontalAlignment="Left" Height="23" Margin="571,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
-            <Button x:Name="btnRenomearBD" Content="Renomear" HorizontalAlignment="Left" Margin="556,73,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnRenomearBD_Click"/>
+            <Label Content="Digite um nome (Ideal &quot;integrapgsqlold ...&quot;, ):" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="551,0,0,55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="45"/>
+            <TextBox x:Name="txtNomeBD" HorizontalAlignment="Left" Height="23" Margin="607,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
+            <Button x:Name="btnRenomearBD" Content="Renomear" HorizontalAlignment="Left" Margin="592,73,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnRenomearBD_Click" IsEnabled="False"/>
         </Grid>
         <Grid x:Name="gridCriaBD" Height="100" Margin="0,231,0,0" VerticalAlignment="Top" MouseLeave="gridCriaBD_MouseLeave" MouseMove="gridCriaBD_MouseMove">
             <Grid.Background>
@@ -118,7 +122,7 @@
                     <GradientStop Color="#FF454F63" Offset="0.36"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <Separator HorizontalAlignment="Left" Height="100" Margin="90.167,-0.235,0,0.235" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+            <Separator HorizontalAlignment="Left" Height="100" Margin="506.167,-0.235,0,0.235" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
                 <Separator.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -128,9 +132,9 @@
                     </TransformGroup>
                 </Separator.RenderTransform>
             </Separator>
-            <Label Content="Criar BD:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="10,35,0,39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Button x:Name="btnCriarBD" Content="Criar BD" HorizontalAlignment="Left" Margin="145,40,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnCriarBD_Click"/>
-            <Separator HorizontalAlignment="Left" Height="100" Margin="472.167,-0.235,0,0.235" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+            <Label Content="Criar BD:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="462,38,0,38" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button x:Name="btnCriarBD" Content="Criar BD" HorizontalAlignment="Left" Margin="597,42,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnCriarBD_Click" IsEnabled="False"/>
+            <Separator HorizontalAlignment="Left" Height="100" Margin="90.167,-0.235,0,-1.315" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
                 <Separator.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -140,9 +144,9 @@
                     </TransformGroup>
                 </Separator.RenderTransform>
             </Separator>
-            <Label Content="Criar Usuários:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="420,35,0,38" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Button x:Name="btnCriausuario" Content="Criar Usuários" HorizontalAlignment="Left" Margin="527,40,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black"/>
-            <Separator HorizontalAlignment="Left" Height="100" Margin="284,-0.235,0,0.235" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+            <Label Content="Criar Usuários:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="10,37,0,37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button x:Name="btnCriausuario" Content="Criar Usuários" HorizontalAlignment="Left" Margin="150,42,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" IsEnabled="False" Click="btnCriausuario_Click"/>
+            <Separator HorizontalAlignment="Left" Height="100" Margin="324,-0.235,0,0.235" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
                 <Separator.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -171,9 +175,9 @@
                 </Separator.RenderTransform>
             </Separator>
             <Label Content="Restore:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="10,35,0,29" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="36"/>
-            <Label Content="Selecione o arquivo para restauração do BD:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="136,13,0,61" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <TextBox x:Name="txtLocalBD" HorizontalAlignment="Left" Height="23" Margin="136,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White" IsReadOnly="True"/>
-            <Separator HorizontalAlignment="Left" Height="100" Margin="401.337,-0.14,0,0.14" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+            <Label Content="Selecione o arquivo para restauração do BD:" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="White" Margin="135,14,0,62" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="txtLocalBD" HorizontalAlignment="Left" Height="23" Margin="136,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#FF249B2F" BorderBrush="Black" Background="White"/>
+            <Separator HorizontalAlignment="Left" Height="100" Margin="411.337,-0.14,0,0.14" VerticalAlignment="Center" Width="80" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
                 <Separator.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -184,10 +188,10 @@
                 </Separator.RenderTransform>
             </Separator>
             <Button x:Name="btnBuscarBD" Content="..." HorizontalAlignment="Left" Margin="396,45,0,0" VerticalAlignment="Top" Width="27" Background="White" BorderBrush="Black" Height="23" Click="btnBuscarBD_Click"/>
-            <Button x:Name="btnRestore" Content="Restore" HorizontalAlignment="Left" Margin="463,45,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnRestore_Click"/>
-            <Button x:Name="btnDownload" Content="Download Exporta" HorizontalAlignment="Left" Margin="617,45,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnDownload_Click"/>
+            <Button x:Name="btnRestore" Content="Restore" HorizontalAlignment="Left" Margin="473,45,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnRestore_Click" IsEnabled="False"/>
+            <Button x:Name="btnDownload" Content="Download Exporta" HorizontalAlignment="Left" Margin="617,45,0,0" VerticalAlignment="Top" Width="149" Background="White" BorderBrush="Black" Click="btnDownload_Click" Visibility="Collapsed"/>
         </Grid>
-        <Grid x:Name="gridRestore_Copy" Height="9" Margin="0,434,0,0" VerticalAlignment="Top">
+        <Grid x:Name="gridRestore_Copy" Height="9" Margin="0,445,0,0" VerticalAlignment="Top">
             <Grid.Background>
                 <ImageBrush ImageSource="Imagens/tarja.bmp"/>
             </Grid.Background>

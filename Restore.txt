@@ -1,0 +1,4 @@
+C:/Program Files/PostgreSQL/9.4/bin\pg_restore.exe --host localhost --port 5432 --username "postgres" --dbname "integraa2" --no-password  --verbose "C:\vdf7\Integra\Base0001\Integra.tar"
+@set PGPASSFILE=C:\Users\Cristiano\AppData\Local\Temp\514724d8-ddd9-4f37-b64d-0cf9d86fd62e.conf
+@C:\Program Files\PostgreSQL\9.4\bin\pg_restore.exe  --host localhost --port 5432 --username "postgres" --dbname "integrapgsql2" --no-password --verbose "C:\vdf7\Integra\Base0001\Integra.tar"  > "C:\vdf7\Integra\Base0001\Integra.tar"
+

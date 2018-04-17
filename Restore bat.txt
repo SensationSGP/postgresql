@@ -1,0 +1,4 @@
+set PGUSER=postgres
+
+set PGPASSWORD=postgres123
+"C:/Progra~2/PostgreSQL/9.4/bin\pg_restore.exe -i -h localhost -p 5432 -c -d "intaiosjd" -v " c:\vdf7\Integra\Base0001\Integra.tar"

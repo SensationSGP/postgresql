@@ -1,0 +1,4 @@
+set PGUSER=postgres
+set PGPASSWORD=postgres123
+
+"C:/Program Files/PostgreSQL/9.4/bin\"pg_dump.exe --host localhost --port 5432 --format custom --blobs --verbose --file "D:\bkp.sql" "dbsibcom"
